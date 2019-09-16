@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute.js";
 import LoginForm from "./components/LoginForm";
 import UserList from "./components/UserList";
-import "./App.css";
 
 function App() {
   return (

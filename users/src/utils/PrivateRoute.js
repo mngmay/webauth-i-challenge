@@ -6,7 +6,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={props => {
-        if (localStorage.getItem("username")) {
+        if (
+          localStorage.getItem("username") &&
+          localStorage.getItem("password")
+        ) {
           return <Component {...props} />;
         }
         return <Redirect to="/" />;

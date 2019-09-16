@@ -18,12 +18,29 @@ const UserList = props => {
   };
 
   return (
-    <>
-      <div>Users List</div>
-      {users.map(user => (
-        <div>{user.username}</div>
-      ))}
-    </>
+    <div className="userlist">
+      <h1>Users List</h1>
+      <div className="summary">
+        The below illustrates that usernames and hashed passwords were
+        successfully posted to a student database assignment. Please do not post
+        passwords in real life.
+      </div>
+
+      <div className="details">
+        <div className="usernames">
+          <h3>Username</h3>
+          {users.map(user => (
+            <div className="row">{user.username}</div>
+          ))}
+        </div>
+        <div className="hashed">
+          <h3>#</h3>
+          {users.map(user => (
+            <div className="row">{user.password}</div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

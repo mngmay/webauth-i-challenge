@@ -30,7 +30,8 @@ const LoginForm = props => {
       });
   };
   return (
-    <>
+    <div className="login">
+      <h1>Login</h1>
       <form onSubmit={login}>
         <input
           type="text"
@@ -47,7 +48,7 @@ const LoginForm = props => {
         <button>Login</button>
       </form>
       {loading && <div>Loading...</div>}
-    </>
+    </div>
   );
 };
 

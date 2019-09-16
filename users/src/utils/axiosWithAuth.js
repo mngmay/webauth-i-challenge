@@ -8,6 +8,7 @@ export const axiosWithAuth = () => {
   return axios.create({
     headers: {
       Authorization: token,
+      // totally don't really do this in real life
       username: username,
       password: password
     }
