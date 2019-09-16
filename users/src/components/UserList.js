@@ -3,6 +3,8 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const UserList = props => {
   const [users, setUsers] = useState([]);
+  const [show, setShow] = useState(false);
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -15,6 +17,10 @@ const UserList = props => {
         setUsers(usersList.data);
       })
       .catch(err => console.log(err));
+  };
+
+  const toggleShow = () => {
+    setShow(!show);
   };
 
   return (
@@ -35,8 +41,15 @@ const UserList = props => {
         </div>
         <div className="hashed">
           <h3>#</h3>
-          {users.map(user => (
-            <div className="row">{user.password}</div>
+          {users.map((user, index) => (
+            <div
+              className="row"
+              onClick={toggleShow}
+              name={user.username}
+              key={index}
+            >
+              {!show ? "###" : user.password}
+            </div>
           ))}
         </div>
       </div>
