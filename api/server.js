@@ -12,7 +12,7 @@ server.use(helmet());
 server.use(cors());
 
 server.use("/api/users", UsersRouter);
-server.use("/api/auth", AuthRouter);
+server.use("/api/restricted", AuthRouter);
 
 // server check
 server.get("/", (req, res) => {
