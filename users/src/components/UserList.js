@@ -35,8 +35,10 @@ const UserList = props => {
       <div className="details">
         <div className="usernames">
           <h3>Username</h3>
-          {users.map(user => (
-            <div className="row">{user.username}</div>
+          {users.map((user, index) => (
+            <div className="row" key={index}>
+              {user.username}
+            </div>
           ))}
         </div>
         <div className="hashed">

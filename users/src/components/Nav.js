@@ -6,7 +6,7 @@ const Nav = props => {
     axios
       .get("http://localhost:5000/api/auth/logout")
       .then(res => {
-        console.log(res, props);
+        console.log(res, props, "loggedout!");
         localStorage.removeItem("username");
         localStorage.removeItem("password");
         props.history.push("/");

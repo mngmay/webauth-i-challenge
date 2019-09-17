@@ -1,5 +1,7 @@
 import axios from "axios";
 
+// used for Day 1 before cookies
+
 export const axiosWithAuth = () => {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
