@@ -11,7 +11,7 @@ const UserList = props => {
 
   const getUsers = () => {
     axiosWithAuth()
-      .get("http://localhost:5000/api/users")
+      .get("http://localhost:5000/api/restricted/users")
       .then(usersList => {
         console.log(usersList);
         setUsers(usersList.data);

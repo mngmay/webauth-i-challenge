@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 const LoginForm = props => {
   const [credentials, setCredentials] = useState({
@@ -16,7 +17,7 @@ const LoginForm = props => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post("http://localhost:5000/api/restricted/login", credentials)
+      .post("http://localhost:5000/api/auth/login", credentials)
       .then(res => {
         console.log(res);
         localStorage.setItem("username", credentials.username);
