@@ -8,12 +8,13 @@ const UsersRouter = require("./users/users-router.js");
 const AuthRouter = require("./auth/auth-router.js");
 
 const dbConnection = require("../data/db-config.js");
+const restricted = require("./auth/auth-middleware.js");
 
 const server = express();
 
 const sessionConfig = {
   name: "oreo", // would name the cookie sid by default
-  secret: process.env.SESSION_SECRET || "keep it secret, keep it safe",
+  secret: process.env.SESSION_SECRET || "it's a secret",
   cookie: {
     maxAge: 1000 * 60 * 60, // in milliseconds
     secure: false, // true means only send cookie over https - want it true in production
@@ -35,12 +36,17 @@ server.use(helmet());
 server.use(cors());
 server.use(session(sessionConfig));
 
-server.use("/api/users", UsersRouter);
-server.use("/api/restricted", AuthRouter);
+server.use("/api/restricted", restricted);
+server.use("/api/restricted/users", UsersRouter);
+server.use("/api/auth", AuthRouter);
 
 // server check
 server.get("/", (req, res) => {
   res.send("<h3>API is connected and server is running</h3>");
+});
+
+server.get("/api/restricted/test", (req, res) => {
+  res.send("<h3>Congrats you're logged in!");
 });
 
 module.exports = server;
