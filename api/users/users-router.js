@@ -1,11 +1,11 @@
 const express = require("express");
 
 const Users = require("./users-model.js");
-const { auth } = require("../auth/auth-middleware.js");
+const restricted = require("../auth/auth-middleware.js");
 
 const router = express.Router();
 
-router.get("/", auth, (req, res) => {
+router.get("/", restricted, (req, res) => {
   Users.find()
     .then(users => {
       res.json(users);
